@@ -1,0 +1,30 @@
+[
+  {
+    "name": "blog",
+    "path": "/blog",
+    "component": "/home/aaron/Documents/projects/drams/frontend/pages/blog/index.vue",
+    "chunkName": "pages/blog/index",
+    "_name": "_1fd71db4"
+  },
+  {
+    "name": "inspire",
+    "path": "/inspire",
+    "component": "/home/aaron/Documents/projects/drams/frontend/pages/inspire.vue",
+    "chunkName": "pages/inspire",
+    "_name": "_ca5507ae"
+  },
+  {
+    "name": "blog-slug",
+    "path": "/blog/:slug",
+    "component": "/home/aaron/Documents/projects/drams/frontend/pages/blog/_slug.vue",
+    "chunkName": "pages/blog/_slug",
+    "_name": "_23446044"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/home/aaron/Documents/projects/drams/frontend/pages/index.vue",
+    "chunkName": "pages/index",
+    "_name": "_2cc7f7e1"
+  }
+]
