@@ -12,6 +12,7 @@ import Navigation from '~/components/Navigation'
 
 export default {
   name: 'InspirePage',
+  auth: false,
 
   components: {
     Navigation

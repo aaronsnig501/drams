@@ -22,9 +22,13 @@
 
         <div class="navbar-end">
           <div class="navbar-item">
-            <div class="buttons">
-              <a href="" class="button is-dark">Register</a>
-              <a href="" class="button is-link">Login</a>
+            <div class="buttons" v-if="!auth.loggedIn">
+             <NuxtLink to="/accounts/create" class="button is-dark">
+                Register
+              </NuxtLink>
+              <NuxtLink to="/accounts/login" class="button is-link">
+                Login
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -34,5 +38,14 @@
 </template>
 
 <script>
-export default {}
+import { mapState } from "vuex";
+export default {
+
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["auth"])
+  },
+}
 </script>

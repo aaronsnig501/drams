@@ -2,29 +2,43 @@
   {
     "name": "blog",
     "path": "/blog",
-    "component": "/home/aaron/Documents/projects/drams/frontend/pages/blog/index.vue",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/blog/index.vue",
     "chunkName": "pages/blog/index",
-    "_name": "_1fd71db4"
+    "_name": "_c9c9ff5c"
   },
   {
     "name": "inspire",
     "path": "/inspire",
-    "component": "/home/aaron/Documents/projects/drams/frontend/pages/inspire.vue",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/inspire.vue",
     "chunkName": "pages/inspire",
-    "_name": "_ca5507ae"
+    "_name": "_1a5dc706"
+  },
+  {
+    "name": "accounts-create",
+    "path": "/accounts/create",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/accounts/create.vue",
+    "chunkName": "pages/accounts/create",
+    "_name": "_4485f868"
+  },
+  {
+    "name": "accounts-login",
+    "path": "/accounts/login",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/accounts/login.vue",
+    "chunkName": "pages/accounts/login",
+    "_name": "_4674982d"
   },
   {
     "name": "blog-slug",
     "path": "/blog/:slug",
-    "component": "/home/aaron/Documents/projects/drams/frontend/pages/blog/_slug.vue",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/blog/_slug.vue",
     "chunkName": "pages/blog/_slug",
-    "_name": "_23446044"
+    "_name": "_cd3741ec"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/home/aaron/Documents/projects/drams/frontend/pages/index.vue",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_2cc7f7e1"
+    "_name": "_cbd0c596"
   }
 ]

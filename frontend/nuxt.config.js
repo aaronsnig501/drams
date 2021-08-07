@@ -37,14 +37,43 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   },
 
+  router: {
+    middleware: ['auth']
+  },
+
   axios: {
     baseURL: "http://127.0.0.1:8000/"
+  },
+
+  auth: {
+    redirect: {
+      login: '/accounts/create',
+      logout: '/',
+      home: '/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "/api/token/",
+            method: "post",
+            propertyName: "data.token"
+          },
+          logout: false,
+          user: false
+        },
+        tokenType: '',
+        tokenName: 'x-auth',
+        autoFetchUser:false
+      }
+    }
   }
 }

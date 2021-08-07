@@ -4,10 +4,12 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _1fd71db4 = () => interopDefault(import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */))
-const _ca5507ae = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
-const _23446044 = () => interopDefault(import('../pages/blog/_slug.vue' /* webpackChunkName: "pages/blog/_slug" */))
-const _2cc7f7e1 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _c9c9ff5c = () => interopDefault(import('../pages/blog/index.vue' /* webpackChunkName: "pages/blog/index" */))
+const _1a5dc706 = () => interopDefault(import('../pages/inspire.vue' /* webpackChunkName: "pages/inspire" */))
+const _4485f868 = () => interopDefault(import('../pages/accounts/create.vue' /* webpackChunkName: "pages/accounts/create" */))
+const _4674982d = () => interopDefault(import('../pages/accounts/login.vue' /* webpackChunkName: "pages/accounts/login" */))
+const _cd3741ec = () => interopDefault(import('../pages/blog/_slug.vue' /* webpackChunkName: "pages/blog/_slug" */))
+const _cbd0c596 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -22,19 +24,27 @@ export const routerOptions = {
 
   routes: [{
     path: "/blog",
-    component: _1fd71db4,
+    component: _c9c9ff5c,
     name: "blog"
   }, {
     path: "/inspire",
-    component: _ca5507ae,
+    component: _1a5dc706,
     name: "inspire"
   }, {
+    path: "/accounts/create",
+    component: _4485f868,
+    name: "accounts-create"
+  }, {
+    path: "/accounts/login",
+    component: _4674982d,
+    name: "accounts-login"
+  }, {
     path: "/blog/:slug",
-    component: _23446044,
+    component: _cd3741ec,
     name: "blog-slug"
   }, {
     path: "/",
-    component: _2cc7f7e1,
+    component: _cbd0c596,
     name: "index"
   }],
 

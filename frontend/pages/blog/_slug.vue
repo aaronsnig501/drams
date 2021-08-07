@@ -17,6 +17,7 @@ import Navigation from "~/components/Navigation";
 
 export default {
 	name: 'Post',
+	auth: false,
 
 	components: {
 		Navigation
@@ -24,8 +25,8 @@ export default {
 
 	async asyncData({ params, $axios }) {
 		let { data } = await $axios.get(`/blog/${params.slug}/`);
-    return { data }; 
+    return { data };
 	},
-	
+
 }
 </script>

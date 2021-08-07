@@ -41,6 +41,8 @@ import Navigation from '~/components/Navigation'
 
 export default {
   name: 'HomePage',
+  middleware: 'auth',
+  auth: false,
 
   components: {
     Navigation,
@@ -71,8 +73,6 @@ export default {
       this.selected = event.target.value;
     }
   }
-
-
 }
 </script>
 
