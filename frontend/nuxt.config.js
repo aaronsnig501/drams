@@ -65,14 +65,18 @@ export default {
           login: {
             url: "/api/token/",
             method: "post",
-            propertyName: "data.token"
+            propertyName: "data.access"
+          },
+          user: {
+            url: "/api/accounts/me/",
+            method: "get",
+            propertyName: false
           },
           logout: false,
-          user: false
         },
-        tokenType: '',
-        tokenName: 'x-auth',
-        autoFetchUser:false
+        autoFetchUser: false,
+        tokenRequired: true,
+        tokenType: 'Bearer',
       }
     }
   }

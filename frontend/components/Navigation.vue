@@ -30,6 +30,13 @@
                 Login
               </NuxtLink>
             </div>
+
+            <div class="buttons" v-if="auth.loggedIn">
+              <p>{{ auth.user.email }}</p>
+              <a class="button is-link" @click.prevent="logOut">
+                Logout
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -47,5 +54,12 @@ export default {
   computed: {
     ...mapState(["auth"])
   },
+  methods: {
+    logOut() {
+      console.log(this.$auth.strategies)
+      this.$auth.logout();
+      console.log("logged out")
+    }
+  }
 }
 </script>

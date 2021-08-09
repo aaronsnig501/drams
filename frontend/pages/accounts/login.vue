@@ -85,34 +85,34 @@ export default {
   },
 
   methods: {
+
+    /**
+     * Log the user in using Nuxt auth.
+     *
+     * This was tedious, and there's probably a better way doing this, but for now the
+     * login is performed using `$auth.loginWith` which will retrieve the auth tokens.
+     * These tokens will then be set, and then used to retrieve the user profile.
+     *
+     * Once that is complete the user will be redirected to the home page
+     */
     async loginUser() {
       let data = this.login;
       this.$nuxt.$loading.start();
+      let auth = await this.$auth.loginWith("local", {
+          data
+      });
+      this.loading = false;
 
-      try {
-        let response = await this.$auth.loginWith("local", {
-            data
-        });
-        console.log(response)
-        this.loading = false;
+      const tokens = auth.data;
 
-        const user = response.data;
-        this.$auth.setUser(user);
-        console.log({
-          group: "success",
-          title: "Success!",
-          text: "Account created successfully!"
-        });
-      } catch (error) {
-        this.loading = false;
-        console.log({
-          group: "error",
-          title: "Error!",
-          text: error.response
-            ? error.response.data.error
-            : "Sorry an error occured, check your internet"
-        })
-      }
+      this.$auth.setUserToken(tokens.access, tokens.refresh).then(
+        () => this.$auth.fetchUser())
+
+      this.$axios.setHeader(`Authorization: Bearer {tokens.access}`)
+      let user = await this.$axios.get("/api/accounts/me/");
+      await this.$auth.setUser(user.data);
+
+      this.$router.push("/");
     }
   }
 };
