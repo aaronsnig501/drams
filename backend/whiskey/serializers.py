@@ -7,7 +7,7 @@ from .models import Brand
 class BrandSerializer(ModelSerializer):
     class Meta:
         model = Brand
-        fields = ("id", "name", "year_established")
+        fields = ("id", "name", "year_established", "type", "region")
 
     name = CharField(
         max_length=50, validators=[UniqueValidator(queryset=Brand.objects.all())])

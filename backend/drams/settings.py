@@ -172,3 +172,11 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_LIFETIME": timedelta(minutes=5),
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1)
 }
+
+COUNTRIES_OVERRIDE = {
+    "GB": None,
+    "GB-ENG": "England",
+    "GB-NIR": "Northern Ireland",
+    "GB-SCT": "Scotland",
+    "GB-WLS": "Wales",
+}

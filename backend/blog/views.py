@@ -16,4 +16,3 @@ class PostViewset(viewsets.ModelViewSet):
 
     def get_queryset(self):
         return Post.objects.all()
-
