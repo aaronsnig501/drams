@@ -22,6 +22,7 @@ from rest_framework_simplejwt.views import (
 )
 
 urlpatterns = [
+    path("jet/", include("jet.urls", "jet")),
     path("admin/", admin.site.urls),
     path("blog/", include("blog.urls", namespace="blog")),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
