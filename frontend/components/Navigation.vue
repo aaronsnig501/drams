@@ -6,7 +6,7 @@
           <NuxtLink to="/" class="navbar-item">
             Home
           </NuxtLink>
-          <NuxtLink to="/inspire" class="navbar-item">
+          <NuxtLink to="/whiskey" class="navbar-item">
             Whiskies
           </NuxtLink>
           <a href="" class="navbar-item">
