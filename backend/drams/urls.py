@@ -17,6 +17,8 @@ from django.urls import path
 from django.conf.urls import include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 from rest_framework_simplejwt.views import (
     TokenObtainPairView, TokenRefreshView
 )
@@ -29,5 +31,5 @@ urlpatterns = [
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/accounts/", include("accounts.urls", namespace="accounts")),
-    path("api/whiskey/", include("whiskey.urls", namespace="brands"))
-]
+    path("api/whiskey/", include("whiskey.urls", namespace="brands")),
+]  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
