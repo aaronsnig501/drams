@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.db.models import (
-    Model, CharField, IntegerField, ForeignKey, RESTRICT
+    Model, CharField, IntegerField, ForeignKey, TextField, ImageField, RESTRICT
 )
 from django_countries.fields import CountryField
 
@@ -57,6 +57,8 @@ class Whiskey(Model):
     age_statement = CharField(max_length=3, null=False, blank=False)
     colour = CharField(max_length=1, choices=COLOURING, default="0")
     chill_filtered = CharField(max_length=1, choices=CHILL_FILTERED, default="0")
+    description = TextField()
+    image = ImageField(upload_to="media/")
 
     def __str__(self):
         return f"{self.name}"
