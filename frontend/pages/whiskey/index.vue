@@ -4,8 +4,7 @@
 
     <section class="section">
       <div class="columns">
-        <div class="column is-1"></div>
-        <div class="column is-11">
+        <div class="column is-12">
           <h1 class="title is-3">Whiskies</h1>
         </div>
       </div>
@@ -21,13 +20,13 @@
                   name="username"
                   class="input"
                   type="text"
-                  v-model="register.username"
+                  v-model="search.textSearch"
                 />
               </li>
               <li>
                 <button
                   class="button is-vcentered is-primary is-outlined is-fullwidth mt-3"
-                  @click.prevent="createAccount"
+                  @click.prevent="searchWhiskies"
                 >
                   Search whiskey
                 </button>
@@ -61,6 +60,11 @@
           </aside>
         </div>
         <div class="column is-9">
+          <div v-if="whiskies.length == 0">
+            <p class="is-size-5 mt-5 ml-6">
+              Sorry, there are no whiskies that match your query
+            </p>
+          </div>
           <div class="box" v-for="whiskey in whiskies" :key="whiskey.id">
             <article class="media">
               <div class="media-left">
@@ -118,10 +122,8 @@ export default {
 
   data() {
     return {
-      register: {
-        username: "",
-        email: "",
-        password: ""
+      search: {
+        textSearch: "",
       },
       whiskies: []
     }
@@ -130,5 +132,12 @@ export default {
   async fetch() {
     this.whiskies = await this.$store.dispatch("getWhiskies");
   },
+
+  methods: {
+    async searchWhiskies() {
+      this.whiskies = await this.$store.dispatch(
+        "getWhiskies", this.search.textSearch);
+    }
+  }
 }
 </script>
