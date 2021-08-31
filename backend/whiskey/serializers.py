@@ -33,7 +33,9 @@ class WhiskeySerializer(ModelSerializer):
             "description",
             "image",
             "proof",
-            "abv"
+            "abv",
+            "type"
         )
 
     brand = StringRelatedField()
+    type = StringRelatedField()
