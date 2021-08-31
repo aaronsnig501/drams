@@ -59,6 +59,11 @@ class Whiskey(Model):
     chill_filtered = CharField(max_length=1, choices=CHILL_FILTERED, default="0")
     description = TextField()
     image = ImageField(upload_to="media/")
+    proof = IntegerField()
 
     def __str__(self):
         return f"{self.name}"
+
+    @property
+    def abv(self):
+        return f"{self.proof / 2}%"
