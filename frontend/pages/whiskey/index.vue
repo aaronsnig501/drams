@@ -4,11 +4,13 @@
 
     <section class="section">
       <div class="columns">
-        <div class="column is-12">
+        <div class="column is-1"></div>
+        <div class="column is-11">
           <h1 class="title is-3">Whiskies</h1>
         </div>
       </div>
       <div class="columns main-section is-8">
+        <div class="column is-1"></div>
         <div class="column is-3">
           <aside class="menu is-4">
             <p class="menu-label">
@@ -26,40 +28,63 @@
               <li>
                 <button
                   class="button is-vcentered is-primary is-outlined is-fullwidth mt-3"
-                  @click.prevent="searchWhiskies"
+                  @click.prevent="searchWhiskies('search', search.textSearch)"
                 >
                   Search whiskey
                 </button>
               </li>
             </ul>
             <p class="menu-label">
-              Administration
+              Quick Filters
             </p>
             <ul class="menu-list">
-              <li><a>Team Settings</a></li>
-              <li>
-                <a class="is-active">Manage Your Team</a>
+              <li>Type
                 <ul>
-                  <li><a>Members</a></li>
-                  <li><a>Plugins</a></li>
-                  <li><a>Add a member</a></li>
+                  <li v-for="type in types" :key="type">
+                    <a @click.prevent="searchWhiskies('search', type)">{{ type }}</a>
+                  </li>
                 </ul>
               </li>
-              <li><a>Invitations</a></li>
-              <li><a>Cloud Storage Environment Settings</a></li>
-              <li><a>Authentication</a></li>
-            </ul>
-            <p class="menu-label">
-              Transactions
-            </p>
-            <ul class="menu-list">
-              <li><a>Payments</a></li>
-              <li><a>Transfers</a></li>
-              <li><a>Balance</a></li>
+              <li>Colouring
+                <ul>
+                  <li v-for="colouring in colourings" :key="colouring.id">
+                    <a @click.prevent="searchWhiskies('colour', colouring.id)">
+                      {{ colouring.value }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>Chill filtering
+                <ul>
+                  <li v-for="filtering in filterings" :key="filtering.id">
+                    <a @click.prevent="searchWhiskies('chill_filtered', filtering.id)">
+                      {{ filtering.value }}
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li>Proof
+                <ul>
+                  <li>
+                    <input
+                      name="username"
+                      class="input"
+                      type="text"
+                      v-model="search.proofSearch"
+                    />
+                    <button
+                      class="button is-vcentered is-primary is-outlined is-fullwidth mt-3"
+                      @click.prevent="searchWhiskies('proof', search.proofSearch)"
+                    >
+                      Search by proof
+                    </button>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </aside>
         </div>
-        <div class="column is-9">
+        <div class="column is-7">
           <div v-if="whiskies.length == 0">
             <p class="is-size-5 mt-5 ml-6">
               Sorry, there are no whiskies that match your query
@@ -77,7 +102,9 @@
                   <p class="is-size-4">
                     <strong>{{ whiskey.name }}</strong>
                     <small>{{ whiskey.brand }}</small>
-                    <small class="is-size-5"> - {{ whiskey.age_statement }} years old</small>
+                    <small class="is-size-5">
+                      - {{ whiskey.age_statement }} years old
+                    </small>
                   </p>
                   <p>
                     {{ whiskey.description }}
@@ -109,6 +136,20 @@
   </main>
 </template>
 
+<style scoped>
+.menu {
+  position: sticky;
+  display: inline-block;
+  vertical-align: top;
+  max-height: 100vh;
+  overflow-y: auto;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  padding: 30px;
+}
+</style>
+
 <script>
 import Navigation from '~/components/Navigation'
 
@@ -124,19 +165,36 @@ export default {
     return {
       search: {
         textSearch: "",
+        proofSearch: ""
       },
+      types: [
+        "Bourbon",
+        "Rye",
+        "Scotch",
+        "Irish",
+        "Japanese",
+        "Canadian"
+      ],
+      colourings: [
+        {"id": "1", "value": "Coloured"},
+        {"id": "2", "value": "Natural"}
+      ],
+      filterings: [
+        {"id": "1", "value": "Chill-filtered"},
+        {"id": "2", "value": "Non-chill-filtered"}
+      ],
       whiskies: []
     }
   },
 
   async fetch() {
-    this.whiskies = await this.$store.dispatch("getWhiskies");
+    await this.searchWhiskies();
   },
 
   methods: {
-    async searchWhiskies() {
-      this.whiskies = await this.$store.dispatch(
-        "getWhiskies", this.search.textSearch);
+    async searchWhiskies(paramName, value) {
+      let params = {[paramName]: value};
+      this.whiskies = await this.$store.dispatch("getWhiskies", params);
     }
   }
 }

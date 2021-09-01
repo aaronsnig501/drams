@@ -6,9 +6,7 @@ export const actions = {
 
   async getWhiskies(context, searchParams) {
     let { data } = await this.$axios.get("/api/whiskey/", {
-      params: {
-        search: searchParams
-      }
+      params: searchParams
     });
     return data;
   }
