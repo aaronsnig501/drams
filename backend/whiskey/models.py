@@ -30,7 +30,6 @@ class Brand(Model):
 
     name = CharField(max_length=50, null=False, blank=False)
     year_established = IntegerField(null=False, blank=False)
-    type = ForeignKey(Type, related_name="type", on_delete=RESTRICT)
     region = ForeignKey(
         Region, null=True, blank=True, related_name="region", on_delete=RESTRICT)
 
@@ -59,6 +58,12 @@ class Whiskey(Model):
     chill_filtered = CharField(max_length=1, choices=CHILL_FILTERED, default="0")
     description = TextField()
     image = ImageField(upload_to="media/")
+    proof = IntegerField()
+    type = ForeignKey(Type, related_name="type", on_delete=RESTRICT)
 
     def __str__(self):
         return f"{self.name}"
+
+    @property
+    def abv(self):
+        return f"{self.proof / 2}%"

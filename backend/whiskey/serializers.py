@@ -24,6 +24,18 @@ class WhiskeySerializer(ModelSerializer):
     class Meta:
         model = Whiskey
         fields = (
-            "id", "name", "brand", "age_statement", "colour", "chill_filtered", "description", "image")
+            "id",
+            "name",
+            "brand",
+            "age_statement",
+            "colour",
+            "chill_filtered",
+            "description",
+            "image",
+            "proof",
+            "abv",
+            "type"
+        )
 
     brand = StringRelatedField()
+    type = StringRelatedField()
