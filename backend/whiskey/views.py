@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.filters import SearchFilter
+from rest_framework.filters import SearchFilter, OrderingFilter
 from .models import Brand, Whiskey
 from .serializers import BrandSerializer, WhiskeySerializer
 
@@ -17,9 +17,9 @@ class BrandViewSet(ModelViewSet):
 
 class WhiskeyViewSet(ModelViewSet):
     serializer_class = WhiskeySerializer
-    filter_backends = [SearchFilter]
+    filter_backends = [SearchFilter, OrderingFilter]
     search_fields = ["name", "brand__name", "type__name"]
-    filterset_fields = ["colour", "chill_filtered", "proof"]
+    ordering_fields = ["name", "brand__name", "type__name", "proof", "age_statement"]
 
     def _parse_query_params(self):
         """Parse query params
