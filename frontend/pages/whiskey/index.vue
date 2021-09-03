@@ -5,8 +5,35 @@
     <section class="section">
       <div class="columns">
         <div class="column is-1"></div>
-        <div class="column is-11">
+        <div class="column is-3">
           <h1 class="title is-3">Whiskies</h1>
+        </div>
+        <div class="column is-2">
+          <div class="navbar-menu">
+          <b-dropdown
+            append-to-body
+            aria-role="menu"
+            scrollable
+            max-height="200"
+            trap-focus
+          >
+            <template #trigger>
+              <b-button
+                label="Order results by:"
+                type="is-primary"
+                :icon-right="active ? 'menu-up' : 'menu-down'" />
+            </template>
+
+            <b-dropdown-item
+              v-for="option in sortingOptions"
+              :key="option.value"
+              aria-role="listitem"
+              @click="searchWhiskies('ordering', option.value)"
+            >
+              {{ option.text }}
+            </b-dropdown-item>
+          </b-dropdown>
+          </div>
         </div>
       </div>
       <div class="columns main-section is-8">
@@ -182,6 +209,18 @@ export default {
       filterings: [
         {"id": "1", "value": "Chill-filtered"},
         {"id": "2", "value": "Non-chill-filtered"}
+      ],
+      sortingOptions: [
+        {"value": "name", "text": "Name Ascending"},
+        {"value": "-name", "text": "Name Descending"},
+        {"value": "brand__name", "text": "Brand Name Ascending"},
+        {"value": "-brand__name", "text": "Brand Name Descending"},
+        {"value": "type__name", "text": "Type Name Ascending"},
+        {"value": "-type__name", "text": "Type Name Descending"},
+        {"value": "proof", "text": "Proof Ascending"},
+        {"value": "-proof", "text": "Proof Descending"},
+        {"value": "age_statement", "text": "Age Statement Ascending"},
+        {"value": "-age_statement", "text": "Age Statement Descending"},
       ],
       whiskies: []
     }
