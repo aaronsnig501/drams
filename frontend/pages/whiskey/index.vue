@@ -121,17 +121,21 @@
             <article class="media">
               <div class="media-left">
                 <figure class="image is-128x128">
-                  <img v-bind:src="whiskey.image" alt="Image">
+                  <NuxtLink  :to="'/whiskey/' + whiskey.id">
+                    <img v-bind:src="whiskey.image" alt="Image">
+                  </NuxtLink>
                 </figure>
               </div>
               <div class="media-content">
                 <div class="content">
                   <p class="is-size-4">
-                    <strong>{{ whiskey.name }}</strong>
-                    <small>{{ whiskey.brand }}</small>
-                    <small class="is-size-5">
-                      - {{ whiskey.age_statement }} years old
-                    </small>
+                    <NuxtLink :to="'/whiskey/' + whiskey.id">
+                      <strong class="has-text-black">{{ whiskey.name }}</strong>
+                      <small class="has-text-black">{{ whiskey.brand }}</small>
+                      <small class="has-text-black is-size-5">
+                        - {{ whiskey.age_statement }} years old
+                      </small>
+                    </NuxtLink>
                   </p>
                   <p>
                     {{ whiskey.description }}
