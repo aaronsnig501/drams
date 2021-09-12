@@ -20,7 +20,7 @@
             <template #trigger>
               <b-button
                 label="Order results by:"
-                type="is-primary"
+                type="is-primary is-outlined"
                 :icon-right="active ? 'menu-up' : 'menu-down'" />
             </template>
 
@@ -144,7 +144,7 @@
                 <nav class="level">
                   <div class="level-left">
                     <a class="level-item" aria-label="reply">
-                      <font-awesome-icon :icon="['fas', 'reply']"  />
+                      <font-awesome-icon :icon="['fas', 'reply']" />
                     </a>
                     <a class="level-item" aria-label="retweet">
                       <span class="icon is-small">
@@ -161,6 +161,18 @@
               </div>
             </article>
           </div>
+        </div>
+        <div class="create-button">
+          <b-tooltip
+            label="Add a new whiskey"
+            type="is-dark"
+            position="is-left"
+          >
+            <NuxtLink :to="'/whiskey/create'" class="button is-primary is-outlined">
+              <font-awesome-icon :icon="['fas', 'plus']" />
+            </NuxtLink>
+          </b-tooltip>
+
         </div>
       </div>
     </section>
@@ -179,6 +191,18 @@
   bottom: 0;
   padding: 30px;
 }
+
+.create-button {
+  position: absolute;
+  right: 3.5%;
+  bottom: 7.5%;
+}
+
+.create-button .button {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
 </style>
 
 <script>
@@ -194,6 +218,7 @@ export default {
 
   data() {
     return {
+      active: false,
       search: {
         textSearch: "",
         proofSearch: ""
