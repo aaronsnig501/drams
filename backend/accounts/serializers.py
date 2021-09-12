@@ -8,8 +8,8 @@ class AccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Account
-        fields = ("email", "username", "password")
-        extra_kwargs = {"password": {"write_only": True}}
+        fields = ("id", "email", "username", "password")
+        extra_kwargs = {"id": {"read_only": True}, "password": {"write_only": True}}
 
     email = serializers.EmailField(required=True)
     username = serializers.CharField(required=True)

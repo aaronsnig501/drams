@@ -1,8 +1,16 @@
 from datetime import datetime
 from django.db.models import (
-    Model, CharField, IntegerField, ForeignKey, TextField, ImageField, RESTRICT
+    Model,
+    CharField,
+    IntegerField,
+    ForeignKey,
+    TextField,
+    ImageField,
+    DateTimeField,
+    RESTRICT
 )
 from django_countries.fields import CountryField
+from accounts.models import Account
 
 
 class Region(Model):
@@ -31,7 +39,8 @@ class Brand(Model):
     name = CharField(max_length=50, null=False, blank=False)
     year_established = IntegerField(null=False, blank=False)
     region = ForeignKey(
-        Region, null=True, blank=True, related_name="region", on_delete=RESTRICT)
+        Region, null=True, blank=True, related_name="region", on_delete=RESTRICT
+    )
 
     def __str__(self):
         return f"{self.name}"
@@ -60,6 +69,9 @@ class Whiskey(Model):
     image = ImageField(upload_to="media/")
     proof = IntegerField()
     type = ForeignKey(Type, related_name="type", on_delete=RESTRICT)
+    added_by = ForeignKey(Account, on_delete=RESTRICT)
+    created_on = DateTimeField(auto_now_add=True, editable=False)
+    last_modified = DateTimeField(auto_now=True, editable=False)
 
     def __str__(self):
         return f"{self.name}"

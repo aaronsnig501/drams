@@ -1,5 +1,9 @@
 from rest_framework.serializers import (
-    ModelSerializer, CharField, IntegerField, StringRelatedField, ValidationError)
+    ModelSerializer,
+    CharField,
+    IntegerField,
+    ValidationError
+)
 from rest_framework.validators import UniqueValidator
 from .models import Brand, Whiskey
 
@@ -7,7 +11,7 @@ from .models import Brand, Whiskey
 class BrandSerializer(ModelSerializer):
     class Meta:
         model = Brand
-        fields = ("id", "name", "year_established", "type", "region")
+        fields = ("id", "name", "year_established", "region")
 
     name = CharField(
         max_length=50, validators=[UniqueValidator(queryset=Brand.objects.all())])
@@ -34,8 +38,6 @@ class WhiskeySerializer(ModelSerializer):
             "image",
             "proof",
             "abv",
-            "type"
+            "type",
+            "added_by"
         )
-
-    brand = StringRelatedField()
-    type = StringRelatedField()
