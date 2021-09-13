@@ -39,6 +39,7 @@
               <div class="field">
                 <p class="control">
                   <input class="input" id="name" type="text" v-model="whiskey.name" />
+                  <span class="has-text-danger"></span>
                 </p>
               </div>
             </div>
@@ -52,6 +53,7 @@
               <div class="field">
                 <p class="control">
                   <input class="input" id="age_statement" type="number" v-model="whiskey.ageStatement" />
+                  <span class="has-text-danger"></span>
                 </p>
               </div>
             </div>
@@ -65,6 +67,7 @@
               <div class="field">
                 <p class="control">
                   <input class="input" id="proof" type="number" v-model="whiskey.proof" />
+                  <span class="has-text-danger"></span>
                 </p>
               </div>
             </div>
@@ -83,6 +86,7 @@
                     <option value="2">Natural</option>
                   </select>
                 </div>
+                <p class="has-text-danger"></p>
               </div>
             </div>
           </div>
@@ -100,6 +104,7 @@
                     <option value="2">No chill filtering</option>
                   </select>
                 </div>
+                <p class="has-text-danger"></p>
               </div>
             </div>
           </div>
@@ -119,6 +124,7 @@
                     <option value="5">Japanese</option>
                   </select>
                 </div>
+                <p class="has-text-danger"></p>
               </div>
             </div>
           </div>
@@ -131,6 +137,7 @@
               <div class="field">
                 <div class="control is-fullwidth">
                   <textarea id="description" class="textarea" placeholder="Whiskey Description" v-model="whiskey.description"></textarea>
+                  <p class="has-text-danger"></p>
                 </div>
               </div>
             </div>
@@ -155,6 +162,7 @@
                         </span>
                       </b-upload>
                     </b-field>
+                    <p class="has-text-danger"></p>
                   </template>
                 </div>
               </div>
@@ -210,7 +218,9 @@
         } catch (error) {
           console.log(typeof error.response.data)
           for (const [field, message] of Object.entries(error.response.data)) {
-            document.querySelector(`#${field}`).classList.add("is-danger");
+            const inputField = document.querySelector(`#${field}`)
+            inputField.classList.add("is-danger");
+            inputField.nextElementSibling.innerText = message;
           }
           this.$buefy.toast.open({
             indefinite: true,
