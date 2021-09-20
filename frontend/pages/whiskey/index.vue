@@ -160,9 +160,23 @@
                 </nav>
               </div>
             </article>
+
           </div>
+          <b-pagination
+            v-model="currentPage"
+            per-page="1"
+            :simple="false"
+            :range-before="1"
+            :range-after="3"
+            :total="totalPages"
+            @change="change(currentPage)"
+            aria-next-label="Next page"
+            aria-previous-label="Previous page"
+            aria-page-label="Page"
+            aria-current-label="Current page">
+          </b-pagination>
         </div>
-        <div class="create-button">
+        <div v-if="auth.loggedIn" class="create-button">
           <b-tooltip
             label="Add a new whiskey"
             type="is-dark"
@@ -175,6 +189,7 @@
 
         </div>
       </div>
+
     </section>
   </main>
 </template>
@@ -193,7 +208,7 @@
 }
 
 .create-button {
-  position: absolute;
+  position: fixed;
   right: 3.5%;
   bottom: 7.5%;
 }
@@ -206,6 +221,7 @@
 </style>
 
 <script>
+import { mapState } from "vuex";
 import Navigation from '~/components/Navigation'
 
 export default {
@@ -251,19 +267,32 @@ export default {
         {"value": "age_statement", "text": "Age Statement Ascending"},
         {"value": "-age_statement", "text": "Age Statement Descending"},
       ],
-      whiskies: []
+      whiskies: [],
+      currentPage: 1,
+      totalPages: 0
     }
   },
 
   async fetch() {
-    await this.searchWhiskies();
+    await this.searchWhiskies("page", 1);
   },
 
   methods: {
     async searchWhiskies(paramName, value) {
       let params = {[paramName]: value};
-      this.whiskies = await this.$store.dispatch("getWhiskies", params);
+
+      let response = await this.$store.dispatch("getWhiskies", params);
+      this.whiskies = response.results;
+      this.totalPages = response.count / 5;
+    },
+
+    async change(page) {
+      await this.searchWhiskies("page", page)
     }
+  },
+
+  computed: {
+    ...mapState(["auth"])
   }
 }
 </script>
