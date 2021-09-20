@@ -182,6 +182,9 @@
 
 <script>
   export default {
+    name: 'CreateWhiskey',
+    auth: true,
+
     data() {
       return {
         whiskey: {
