@@ -121,7 +121,7 @@
             <article class="media">
               <div class="media-left">
                 <figure class="image is-128x128">
-                  <NuxtLink  :to="'/whiskey/' + whiskey.id">
+                  <NuxtLink :to="'/whiskey/' + whiskey.id">
                     <img v-bind:src="whiskey.image" alt="Image">
                   </NuxtLink>
                 </figure>

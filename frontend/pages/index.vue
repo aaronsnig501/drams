@@ -21,12 +21,34 @@
                 </div>
               </div>
               <div class="control is-expanded">
-                <input class="input is-large" name="query" type="text" :placeholder="'Find a ' + selected" />
-              </div>
-              <div class="control">
-                <button class="button is-info is-large">
-                  Search
-                </button>
+                <b-field expanded>
+                  <b-autocomplete
+                    size="is-large"
+                    :data="whiskies"
+                    :placeholder="'Find a ' + selected"
+                    field="title"
+                    :check-infinite-scroll="true"
+                    @typing="getWhiskies"
+                    @select="option => selected = option"
+                  >
+                    <template slot-scope="props">
+                      <NuxtLink :to="'/whiskey/' + props.option.id">
+                        <div class="media">
+                          <div class="media-left">
+                            <img width="32" :src="`${props.option.image}`">
+                          </div>
+                          <div class="media-content">
+                            {{ props.option.name }}
+                            <br>
+                            <small>
+                              {{ props.option.brand }}
+                            </small>
+                          </div>
+                        </div>
+                      </NuxtLink>
+                    </template>
+                  </b-autocomplete>
+                </b-field>
               </div>
             </div>
           </form>
@@ -64,13 +86,20 @@ export default {
           type: "recipe",
           name: "Recipies"
         }
-      ]
+      ],
+      whiskies: [],
     }
   },
 
   methods: {
     onChange(event) {
       this.selected = event.target.value;
+    },
+
+    async getWhiskies(name) {
+      let params = {search: name}
+      let response = await this.$store.dispatch("getWhiskies", params);
+      this.whiskies = response.results;
     }
   }
 }
