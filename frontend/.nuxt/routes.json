@@ -3,42 +3,54 @@
     "name": "blog",
     "path": "/blog",
     "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/blog/index.vue",
-    "chunkName": "pages/blog/index",
-    "_name": "_c9c9ff5c"
+    "chunkName": "pages/blog/index"
   },
   {
     "name": "inspire",
     "path": "/inspire",
     "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/inspire.vue",
-    "chunkName": "pages/inspire",
-    "_name": "_1a5dc706"
+    "chunkName": "pages/inspire"
+  },
+  {
+    "name": "whiskey",
+    "path": "/whiskey",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/whiskey/index.vue",
+    "chunkName": "pages/whiskey/index"
   },
   {
     "name": "accounts-create",
     "path": "/accounts/create",
     "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/accounts/create.vue",
-    "chunkName": "pages/accounts/create",
-    "_name": "_4485f868"
+    "chunkName": "pages/accounts/create"
   },
   {
     "name": "accounts-login",
     "path": "/accounts/login",
     "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/accounts/login.vue",
-    "chunkName": "pages/accounts/login",
-    "_name": "_4674982d"
+    "chunkName": "pages/accounts/login"
+  },
+  {
+    "name": "whiskey-create",
+    "path": "/whiskey/create",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/whiskey/create.vue",
+    "chunkName": "pages/whiskey/create"
   },
   {
     "name": "blog-slug",
     "path": "/blog/:slug",
     "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/blog/_slug.vue",
-    "chunkName": "pages/blog/_slug",
-    "_name": "_cd3741ec"
+    "chunkName": "pages/blog/_slug"
+  },
+  {
+    "name": "whiskey-id",
+    "path": "/whiskey/:id",
+    "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/whiskey/_id.vue",
+    "chunkName": "pages/whiskey/_id"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/mnt/c/Users/aaron/Documents/drams/frontend/pages/index.vue",
-    "chunkName": "pages/index",
-    "_name": "_cbd0c596"
+    "chunkName": "pages/index"
   }
 ]
