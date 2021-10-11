@@ -52,6 +52,10 @@ export default {
   build: {
   },
 
+  plugins: [
+    "~/plugins/api"
+  ],
+
   router: {
     middleware: ['auth']
   },
@@ -70,9 +74,9 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: "/api/token/",
+            url: "/api/auth/token/",
             method: "post",
-            propertyName: "data.access"
+            propertyName: "data.token"
           },
           user: {
             url: "/api/accounts/me/",
@@ -83,7 +87,7 @@ export default {
         },
         autoFetchUser: false,
         tokenRequired: true,
-        tokenType: 'Bearer',
+        tokenType: 'Token',
       }
     }
   }

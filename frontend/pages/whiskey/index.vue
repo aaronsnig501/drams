@@ -226,7 +226,6 @@ import Navigation from '~/components/Navigation'
 
 export default {
   name: 'Whiskey',
-  auth: false,
 
   components: {
     Navigation

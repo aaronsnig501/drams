@@ -63,7 +63,6 @@ import Navigation from '~/components/Navigation'
 
 export default {
   name: 'HomePage',
-  middleware: 'auth',
   auth: false,
 
   components: {
